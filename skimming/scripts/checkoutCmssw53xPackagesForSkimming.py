@@ -71,6 +71,8 @@ def checkoutPackages(args):
 		# not needed any more: https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID
 		#"git cms-cvs-history import V01-04-25 RecoTauTag/RecoTau", 
 		#"git cms-cvs-history import V01-04-13 RecoTauTag/Configuration",
+		# bugfix to get both mva met and taus running
+		"sed -i 's/hpsPFTauDiscriminationByDecayModeFinding/hpsPFTauDiscriminationByDecayModeFinding2/'  RecoMET/METPUSubtraction/python/mvaPFMET_leptons_cfi.py",
 
 		#Check out Kappa
 		"git clone https://ekptrac.physik.uni-karlsruhe.de/git/Kappa",
