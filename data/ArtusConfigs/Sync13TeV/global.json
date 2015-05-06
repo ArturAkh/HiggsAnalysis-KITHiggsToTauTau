@@ -1,0 +1,16 @@
+{
+	"include" : [
+		"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsNumberGeneratedEvents.json"
+	],
+	
+	"Processors" : {
+		"nick" : {
+			"default" : [
+				"producer:GeneratorWeightProducer",
+				"#producer:CrossSectionWeightProducer",
+				"producer:NumberGeneratedEventsWeightProducer",
+				"#producer:NicknameProducer"
+			]
+		}
+	}
+}
