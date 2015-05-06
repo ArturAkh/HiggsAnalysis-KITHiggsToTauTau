@@ -1,0 +1,28 @@
+{
+	"MuonID_documentation" : [
+		"https://twiki.cern.ch/twiki/bin/view/CMS/HiggsToTauTauWorking2015#Muons"
+	],
+	
+	"Year" : 2015,
+	"MuonID" : "medium",
+	
+	"MuonIsoType" : "none",
+	"MuonIso" : "medium",
+	
+	"MuonIsoSignalConeSize" : 0.3,
+	"MuonDeltaBetaCorrectionFactor" : 0.5,
+	"MuonIsoPtSumOverPtUpperThresholdEB" : 0.15,
+	"MuonIsoPtSumOverPtUpperThresholdEE" : 0.15,
+	
+	"#MuonChargedIsoVetoConeSize" : 0.0001,
+	"#MuonNeutralIsoVetoConeSize" : 0.01,
+	"#MuonPhotonIsoVetoConeSize" : 0.01,
+	"#MuonDeltaBetaIsoVetoConeSize" : 0.01,
+	"#MuonChargedIsoPtThreshold" : 0.0,
+	"#MuonNeutralIsoPtThreshold" : 0.5,
+	"#MuonPhotonIsoPtThreshold" : 0.5,
+	"#MuonDeltaBetaIsoPtThreshold" : 0.5,
+	
+	"MuonTrackDxyCut" : 0.045,
+	"MuonTrackDzCut" : 0.2
+}

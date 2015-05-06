@@ -1,8 +1,8 @@
 {
 	"em" : {
 		"include" : [
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsElectronID_em.json",
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsMuonID_em.json"
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsElectronID_em.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsMuonID_em.json"
 		],
 		"Channel" : "EM",
 		"NLooseElectrons" : 1,
@@ -36,11 +36,14 @@
 			"genDiLeptonDecayMode",
 			"genNPartons"
 		],
+		"MuonLowerPtCuts" : 9.0,
+		"MuonUpperAbsEtaCuts" : 2.4,
+
 		"Processors" : {
 			"nick" : {
 				"default" : [
-					"filter:LooseElectronsCountFilter",
-					"filter:LooseMuonsCountFilter",
+					"#filter:LooseElectronsCountFilter",
+					"#filter:LooseMuonsCountFilter",
 					"#producer:HltProducer",
 					"#filter:HltFilter",
 					"producer:MvaMetEMSelector",
@@ -53,6 +56,8 @@
 					"#producer:RecoElectronGenTauJetMatchingProducer",
 					"filter:MinElectronsCountFilter",
 					"producer:ValidMuonsProducer",
+					"filter:MuonLowerPtCutsFilter",
+					"filter:MuonUpperAbsEtaCutsFilter",
 					"filter:ValidMuonsFilter",
 					"filter:MaxMuonsCountFilter",
 					"#producer:MuonTriggerMatchingProducer",
