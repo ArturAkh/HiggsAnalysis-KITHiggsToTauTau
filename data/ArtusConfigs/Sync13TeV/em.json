@@ -38,6 +38,8 @@
 		],
 		"MuonLowerPtCuts" : 9.0,
 		"MuonUpperAbsEtaCuts" : 2.4,
+		"ElectronLowerPtCuts" : 13.0,
+		"ElectronUpperAbsEtaCuts" : 2.5,
 
 		"Processors" : {
 			"nick" : {
@@ -58,6 +60,8 @@
 					"producer:ValidMuonsProducer",
 					"filter:MuonLowerPtCutsFilter",
 					"filter:MuonUpperAbsEtaCutsFilter",
+					"filter:ElectronLowerPtCutsFilter",
+					"filter:ElectronUpperAbsEtaCutsFilter",
 					"filter:ValidMuonsFilter",
 					"filter:MaxMuonsCountFilter",
 					"#producer:MuonTriggerMatchingProducer",
