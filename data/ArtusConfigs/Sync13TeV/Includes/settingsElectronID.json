@@ -2,10 +2,10 @@
 	"ElectronID_documentation" : [
 	],
 	
-	"#ElectronReco" : "user",
+	"ElectronReco" : "user",
 	
 	"ElectronID" : "tight",
-	"ElectronIDType" : "mvanontrig"
+	"ElectronIDType" : "mvanontrig",
 	
 	"ElectronIsoType" : "PF",
 	"ElectronIso" : "none",
@@ -14,17 +14,6 @@
 	"ElectronDeltaBetaCorrectionFactor" : 0.5,
 	"ElectronIsoPtSumOverPtUpperThresholdEB" : 0.15,
 	"ElectronIsoPtSumOverPtUpperThresholdEE" : 0.15,
-	
-	"#ElectronChargedIsoVetoConeSizeEB" : 0.01,
-	"#ElectronChargedIsoVetoConeSizeEE" : 0.015,
-	"#ElectronNeutralIsoVetoConeSize" : -1.0,
-	"#ElectronPhotonIsoVetoConeSizeEB" : 0.08,
-	"#ElectronPhotonIsoVetoConeSizeEE" : 0.08,
-	"#ElectronDeltaBetaIsoVetoConeSize" : -1.0,
-	"#ElectronChargedIsoPtThreshold" : 0.0,
-	"#ElectronNeutralIsoPtThreshold" : 0.0,
-	"#ElectronPhotonIsoPtThreshold" : 0.0,
-	"#ElectronDeltaBetaIsoPtThreshold" : 0.0,
 	
 	"ElectronTrackDxyCut" : 0.045,
 	"ElectronTrackDzCut" : 0.2

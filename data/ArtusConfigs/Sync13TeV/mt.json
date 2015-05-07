@@ -37,6 +37,7 @@
 			11,
 			13
 		],
+		"TauID" : "TauIDRecommendation13TeV",
 		"Quantities" : [
 			{
 				"include" : [
@@ -49,6 +50,10 @@
 			"genDiLeptonDecayMode",
 			"genNPartons"
 		],
+		"TauLowerPtCuts" : 20.0,
+		"TauAbsEtaCuts" : 2.3,
+		"MuonLowerPtCuts" : 18.0,
+		"MuonUpperAbsEtaCuts" : 2.1,
 		"Processors" : {
 			"nick" : {
 				"default" : [
@@ -70,6 +75,10 @@
 					"filter:MinMuonsCountFilter",
 					"producer:ValidTausProducer",
 					"filter:ValidTausFilter",
+					"filter:TauLowerPtCutsFilter",
+					"filter:TauUpperAbsEtaCutsFilter",
+					"filter:MuonLowerPtCutsFilter",
+					"filter:MuonUpperAbsEtaCutsFilter",
 					"#producer:TauTriggerMatchingProducer",
 					"#producer:RecoTauGenParticleMatchingProducer",
 					"#producer:RecoTauGenTauMatchingProducer",
