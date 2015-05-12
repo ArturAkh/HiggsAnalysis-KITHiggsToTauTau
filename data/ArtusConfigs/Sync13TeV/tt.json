@@ -1,0 +1,91 @@
+{
+	"tt" : {
+		"include" : [
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsElectronID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsMuonID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsJetID.json"
+		],
+		"Channel" : "TT",
+		"NLooseElectrons" : 0,
+		"NLooseMuons" : 0,
+		"NElectrons" : 0,
+		"NMuons" : 0,
+		"NTaus" : 2,
+		"MinNElectrons" : 0,
+		"MinNMuons" : 0,
+		"MinNTaus" : 2,
+		"MaxNElectrons" : 0,
+		"MaxNMuons" : 0,
+		"MaxNTaus" : 2,
+		"TauLowerPtCuts" : 45.0,
+		"TauUpperAbsEtaCuts" : 2.1,
+		"EventWeight" : "eventWeight",
+		"TauTauRestFrameReco" : "collinear_approximation",
+		"InvalidateNonMatchingElectrons" : false,
+		"InvalidateNonMatchingMuons" : false,
+		"InvalidateNonMatchingTaus" : false,
+		"InvalidateNonMatchingJets" : false,
+		"DirectIso" : true,
+		"Quantities" : [
+			{
+				"include" : [
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/syncQuantities.json",
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/kappaQuantities.json",
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/weightQuantities.json",
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/leptonQuantities.json"
+				]
+			},
+			"genDiLeptonDecayMode",
+			"genNPartons"
+		],
+		"Processors" : {
+			"nick" : {
+				"default" : [
+					"#filter:LooseElectronsCountFilter",
+					"#filter:LooseMuonsCountFilter",
+					"#producer:HltProducer",
+					"#filter:HltFilter",
+					"producer:MvaMetTTSelector",
+					"producer:ValidElectronsProducer",
+					"filter:MinElectronsCountFilter",
+					"filter:MaxElectronsCountFilter",
+					"producer:ValidMuonsProducer",
+					"filter:MinMuonsCountFilter",
+					"filter:MaxMuonsCountFilter",
+					"producer:ValidTausProducer",
+					"filter:ValidTausFilter",
+					"#producer:TauTriggerMatchingProducer",
+					"#producer:RecoTauGenParticleMatchingProducer",
+					"#producer:RecoTauGenTauMatchingProducer",
+					"#producer:RecoTauGenTauJetMatchingProducer",
+					"#filter:TausCountFilter",
+					"producer:ValidLeptonsProducer",
+					"#producer:ValidTaggedJetsProducer",
+					"#producer:RecoJetGenParticleMatchingProducer",
+					"#producer:ValidBTaggedJetsProducer",
+					"producer:DecayChannelProducer",
+					"filter:DecayChannelFilter",
+					"#filter:DiLeptonChargeFilter",
+					"#producer:SvfitProducer",
+					"producer:TauTauRestFrameSelector",
+					"producer:DiLeptonQuantitiesProducer",
+					"#producer:DiJetQuantitiesProducer",
+					"producer:EventCategoryProducer",
+					"#producer:RecoTauCPProducer",
+					"producer:EventWeightProducer"
+				]
+			}
+		},
+		"Consumers" : [
+			"KappaLambdaNtupleConsumer",
+			"SvfitCacheConsumer",
+			"cutflow_histogram",
+			"CutFlowTreeConsumer",
+			"KappaElectronsConsumer",
+			"KappaMuonsConsumer",
+			"KappaTausConsumer",
+			"#KappaJetsConsumer",
+			"#KappaTaggedJetsConsumer"
+		]
+	}
+}
