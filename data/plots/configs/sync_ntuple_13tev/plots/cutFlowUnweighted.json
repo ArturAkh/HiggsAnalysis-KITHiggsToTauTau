@@ -1,0 +1,25 @@
+{
+    "analysis_modules": [
+        "NormalizeToUnity"
+    ], 
+    "files": [
+        "miniaod.root", 
+        "aod.root"
+    ], 
+    "folders": [
+        "tt"
+    ], 
+    "line_styles": [
+        "-"
+    ], 
+    "markers": [
+        "."
+    ], 
+    "step": [
+        true
+    ], 
+    "x_expressions": [
+        "cutFlowUnweighted"
+    ], 
+    "x_label": ""
+}
