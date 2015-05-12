@@ -3,9 +3,7 @@
 		"include" : [
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsElectronID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsMuonID.json",
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsTauID.json",
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsJetID.json",
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsBTaggedJetID.json"
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsTauID.json"
 		],
 		"Channel" : "MT",
 		"NLooseElectrons" : 0,
@@ -18,9 +16,6 @@
 		"MaxNElectrons" : 0,
 		"MaxNMuons" : 1,
 		"TauDiscriminators" : [
-			"hpsPFTauDiscriminationByLooseElectronRejection",
-			"hpsPFTauDiscriminationByTightMuonRejection",
-			"hpsPFTauDiscriminationByLooseCombinedIsolationDBSumPtCorr3Hits"
 		],
 		"MuonLowerPtCuts" : 18.0,
 		"TauLowerPtCuts" : [
@@ -38,6 +33,7 @@
 			13
 		],
 		"TauID" : "TauIDRecommendation13TeV",
+		"DirectIso" : true,
 		"Quantities" : [
 			{
 				"include" : [
@@ -89,7 +85,7 @@
 					"#filter:DiVetoMuonVetoFilter",
 					"#producer:ValidTaggedJetsProducer",
 					"#producer:RecoJetGenParticleMatchingProducer",
-					"producer:ValidBTaggedJetsProducer",
+					"#producer:ValidBTaggedJetsProducer",
 					"producer:DecayChannelProducer",
 					"filter:DecayChannelFilter",
 					"#filter:DiLeptonChargeFilter",

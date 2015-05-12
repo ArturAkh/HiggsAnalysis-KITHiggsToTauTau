@@ -21,7 +21,7 @@
 				"#producer:HttValidLooseMuonsProducer",
 				"#producer:PUWeightProducer",
 				"producer:GenParticleProducer",
-				"producer:GenPartonCounterProducer",
+				"#producer:GenPartonCounterProducer",
 				"producer:GeneratorWeightProducer"
 			]
 		}
