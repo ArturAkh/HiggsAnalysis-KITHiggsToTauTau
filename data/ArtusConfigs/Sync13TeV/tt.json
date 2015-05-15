@@ -3,6 +3,7 @@
 		"include" : [
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsElectronID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsMuonID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsTauID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsJetID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsBTaggedJetID.json"
 		],
@@ -20,6 +21,7 @@
 		"MaxNTaus" : 2,
 		"TauLowerPtCuts" : 45.0,
 		"TauUpperAbsEtaCuts" : 2.1,
+		"TauID" : "TauIDRecommendation13TeV",
 		"EventWeight" : "eventWeight",
 		"TauTauRestFrameReco" : "collinear_approximation",
 		"InvalidateNonMatchingElectrons" : false,
@@ -40,6 +42,7 @@
 			"genDiLeptonDecayMode",
 			"genNPartons"
 		],
+		"OSChargeLeptons" : true,
 		"Processors" : {
 			"nick" : {
 				"default" : [
@@ -55,7 +58,7 @@
 					"filter:MinMuonsCountFilter",
 					"filter:MaxMuonsCountFilter",
 					"producer:ValidTausProducer",
-					"#filter:ValidTausFilter",
+					"filter:ValidTausFilter",
 					"#producer:TauTriggerMatchingProducer",
 					"#producer:RecoTauGenParticleMatchingProducer",
 					"#producer:RecoTauGenTauMatchingProducer",
