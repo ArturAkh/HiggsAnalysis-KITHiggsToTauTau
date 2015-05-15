@@ -1,6 +1,6 @@
 {
 	"include" : [
-		"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsKappa.json",
+		"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsKappa.json",
 		"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Includes/settingsNumberGeneratedEvents.json"
 	],
 	"SkipEvents" : 0,
@@ -22,7 +22,8 @@
 				"#producer:PUWeightProducer",
 				"producer:GenParticleProducer",
 				"#producer:GenPartonCounterProducer",
-				"producer:GeneratorWeightProducer"
+				"producer:GeneratorWeightProducer",
+				"#producer:TaggedJetCorrectionsProducer"
 			]
 		}
 	}
