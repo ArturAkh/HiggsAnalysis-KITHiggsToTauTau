@@ -1,7 +1,4 @@
 {
-    "analysis_modules": [
-        "NormalizeToUnity"
-    ], 
     "files": [
         "aod.root", 
         "miniaod.root", 
