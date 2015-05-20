@@ -1,12 +1,15 @@
 {
-    "analysis_modules": [
-    ], 
+    "analysis_modules": [], 
     "files": [
         "miniaod.root", 
         "aod.root"
     ], 
     "folders": [
         "tt"
+    ], 
+    "labels": [
+        "miniaod", 
+        "aod"
     ], 
     "line_styles": [
         "-"
