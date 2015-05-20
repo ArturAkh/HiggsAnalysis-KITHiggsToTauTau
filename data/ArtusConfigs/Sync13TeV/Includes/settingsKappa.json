@@ -16,7 +16,12 @@
 	"Muons" : "muons",
 	"Taus" : "taus",
 	"TauMetadata" : "taus",
-	"TaggedJets" : "ak5PFJets",
+	"TaggedJets" : {
+		"nick" : {
+			"_MINIAODSIM" : "ak5PFJets",
+			"_AODSIM" : "AK5PFTaggedJetsCHS"
+		}
+	},
 	"PileupDensity" : "pileupDensity",
 	"Met" :  "met",
 	"MvaMetTT" : "metMVATT",
