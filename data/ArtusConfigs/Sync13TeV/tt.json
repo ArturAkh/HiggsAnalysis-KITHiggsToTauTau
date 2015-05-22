@@ -18,7 +18,6 @@
 		"MinNTaus" : 2,
 		"MaxNElectrons" : 0,
 		"MaxNMuons" : 0,
-		"MaxNTaus" : 2,
 		"TauLowerPtCuts" : 45.0,
 		"TauUpperAbsEtaCuts" : 2.1,
 		"TauID" : "TauIDRecommendation13TeV",
@@ -35,8 +34,7 @@
 					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/syncQuantities.json",
 					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/kappaQuantities.json",
 					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/weightQuantities.json",
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/jetQuantities.json",
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/leptonQuantities.json"
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/jetQuantities.json"
 				]
 			},
 			"genDiLeptonDecayMode",
@@ -63,22 +61,22 @@
 					"producer:RecoTauGenParticleMatchingProducer",
 					"#producer:RecoTauGenTauMatchingProducer",
 					"#producer:RecoTauGenTauJetMatchingProducer",
-					"#filter:TausCountFilter",
 					"producer:ValidLeptonsProducer",
 					"producer:ValidTaggedJetsProducer",
 					"#producer:RecoJetGenParticleMatchingProducer",
 					"producer:ValidBTaggedJetsProducer",
 					"producer:Run2DecayChannelProducer",
 					"filter:DecayChannelFilter",
+					"filter:MinTausCountFilter",
 					"#filter:DiLeptonChargeFilter",
 					"#producer:SvfitProducer",
 					"#producer:TauTauRestFrameSelector",
 					"#producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
-					"producer:EventCategoryProducer",
+					"#producer:EventCategoryProducer",
 					"#producer:RecoTauCPProducer",
-					"producer:GenDiLeptonDecayModeProducer",
-					"producer:EventWeightProducer"
+					"#producer:GenDiLeptonDecayModeProducer",
+					"#producer:EventWeightProducer"
 				]
 			}
 		},
