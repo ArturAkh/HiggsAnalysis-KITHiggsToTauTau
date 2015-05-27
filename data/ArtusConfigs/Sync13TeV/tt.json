@@ -31,10 +31,7 @@
 		"Quantities" : [
 			{
 				"include" : [
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/syncQuantities.json",
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/kappaQuantities.json",
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/weightQuantities.json",
-					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/jetQuantities.json"
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/syncQuantities.json"
 				]
 			},
 			"genDiLeptonDecayMode",
@@ -62,20 +59,22 @@
 					"#producer:RecoTauGenTauMatchingProducer",
 					"#producer:RecoTauGenTauJetMatchingProducer",
 					"producer:ValidLeptonsProducer",
+					"#producer:TaggedJetCorrectionsProducer",
+					"#producer:ValidTaggeJetsProducer",
 					"producer:ValidTaggedJetsProducer",
 					"#producer:RecoJetGenParticleMatchingProducer",
-					"producer:ValidBTaggedJetsProducer",
+					"#producer:ValidBTaggedJetsProducer",
 					"producer:Run2DecayChannelProducer",
 					"filter:DecayChannelFilter",
 					"filter:MinTausCountFilter",
 					"#filter:DiLeptonChargeFilter",
 					"#producer:SvfitProducer",
 					"#producer:TauTauRestFrameSelector",
-					"#producer:DiLeptonQuantitiesProducer",
+					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
-					"#producer:EventCategoryProducer",
+					"producer:EventCategoryProducer",
 					"#producer:RecoTauCPProducer",
-					"#producer:GenDiLeptonDecayModeProducer",
+					"producer:GenDiLeptonDecayModeProducer",
 					"#producer:EventWeightProducer"
 				]
 			}
@@ -83,12 +82,12 @@
 		"Consumers" : [
 			"KappaLambdaNtupleConsumer",
 			"#SvfitCacheConsumer",
-			"cutflow_histogram",
-			"CutFlowTreeConsumer",
-			"KappaElectronsConsumer",
-			"KappaMuonsConsumer",
-			"KappaTausConsumer",
-			"KappaJetsConsumer",
+			"#cutflow_histogram",
+			"#CutFlowTreeConsumer",
+			"#KappaElectronsConsumer",
+			"#KappaMuonsConsumer",
+			"#KappaTausConsumer",
+			"#KappaJetsConsumer",
 			"#KappaTaggedJetsConsumer"
 		]
 	}
