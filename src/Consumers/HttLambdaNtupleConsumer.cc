@@ -76,6 +76,18 @@ void HttLambdaNtupleConsumer::Init(setting_type const& settings)
 	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("phi_sv", LambdaNtupleConsumer<KappaTypes>::GetFloatQuantities()["diTauPhi"]);
 	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("m_sv", LambdaNtupleConsumer<KappaTypes>::GetFloatQuantities()["diTauMass"]);
 	
+	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("isZEE", [](KappaEvent const& event, KappaProduct const& product)
+	{
+		return (product.m_genDiLeptonDecayMode == KappaEnumTypes::DiLeptonDecayMode::EE );
+	});
+	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("isZMM", [](KappaEvent const& event, KappaProduct const& product)
+	{
+		return (product.m_genDiLeptonDecayMode == KappaEnumTypes::DiLeptonDecayMode::MM );
+	});
+	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("isZLL", [](KappaEvent const& event, KappaProduct const& product)
+	{
+		return (product.m_genDiLeptonDecayMode == KappaEnumTypes::DiLeptonDecayMode::MM ||product.m_genDiLeptonDecayMode == KappaEnumTypes::DiLeptonDecayMode::EE   );
+	});
 	// need to be called at last
 	KappaLambdaNtupleConsumer::Init(settings);
 }
