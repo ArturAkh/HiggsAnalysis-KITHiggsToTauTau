@@ -75,6 +75,8 @@
 					"producer:EventCategoryProducer",
 					"#producer:RecoTauCPProducer",
 					"producer:GenDiLeptonDecayModeProducer",
+					"producer:GenTauDecayProducer",
+					"producer:GenTauDecayModeProducer",
 					"#producer:EventWeightProducer"
 				]
 			}
