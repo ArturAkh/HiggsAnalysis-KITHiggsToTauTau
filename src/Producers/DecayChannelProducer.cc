@@ -510,6 +510,7 @@ void Run2DecayChannelProducer::Produce(event_type const& event, product_type& pr
 	}
 	else
 	{
+		product.m_decayChannel = HttEnumTypes::DecayChannel::TT;
 		std::vector<std::pair<KTau*, KTau*>> allDiTauPairs;
 		std::vector<std::pair<KTau*, KTau*>> osDiTauPairs;
 		// Produce di-tau pairs
