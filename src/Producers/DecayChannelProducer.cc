@@ -198,7 +198,7 @@ void DecayChannelProducer::Init(setting_type const& settings)
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("againstElectronTightMVA5_2", [](event_type const& event, product_type const& product)
 	{
-		return product.m_validTaus[1]->getDiscriminator("againstElectronVLooseMVA5", event.m_tauMetadata);
+		return product.m_validTaus[1]->getDiscriminator("againstElectronTightMVA5", event.m_tauMetadata);
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("againstElectronVLooseMVA5_1", [](event_type const& event, product_type const& product)
 	{
@@ -206,7 +206,7 @@ void DecayChannelProducer::Init(setting_type const& settings)
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("againstElectronVLooseMVA5_2", [](event_type const& event, product_type const& product)
 	{
-		return product.m_validTaus[1]->getDiscriminator("againstElectronVTightMVA5", event.m_tauMetadata);
+		return product.m_validTaus[1]->getDiscriminator("againstElectronVLooseMVA5", event.m_tauMetadata);
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("againstElectronVTightMVA5_1", [](event_type const& event, product_type const& product)
 	{
