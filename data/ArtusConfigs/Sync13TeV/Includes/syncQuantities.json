@@ -17,7 +17,7 @@
 		"#effweight",
 		"weight",
 		"#embeddedWeight",
-		"###mvis",
+		"m_vis",
 		"#m_sv",
 		"#pt_sv",
 		"#eta_sv",

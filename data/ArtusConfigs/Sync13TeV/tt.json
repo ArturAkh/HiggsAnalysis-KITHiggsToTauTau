@@ -18,9 +18,15 @@
 		"MinNTaus" : 2,
 		"MaxNElectrons" : 0,
 		"MaxNMuons" : 0,
-		"TauLowerPtCuts" : 45.0,
-		"TauUpperAbsEtaCuts" : 2.1,
 		"TauID" : "TauIDRecommendation13TeV",
+		"TauLowerPtCuts" : [
+			"0:45.0",
+			"1:45.0"
+		],
+		"TauUpperAbsEtaCuts" : [
+			"0:2.1",
+			"1:2.1"
+		],
 		"EventWeight" : "eventWeight",
 		"TauTauRestFrameReco" : "collinear_approximation",
 		"InvalidateNonMatchingElectrons" : false,
@@ -54,6 +60,8 @@
 					"#filter:MaxMuonsCountFilter",
 					"producer:ValidTausProducer",
 					"filter:ValidTausFilter",
+					"filter:TauLowerPtCutsFilter",
+					"filter:TauUpperAbsEtaCutsFilter",
 					"#producer:TauTriggerMatchingProducer",
 					"producer:RecoTauGenParticleMatchingProducer",
 					"#producer:RecoTauGenTauMatchingProducer",
