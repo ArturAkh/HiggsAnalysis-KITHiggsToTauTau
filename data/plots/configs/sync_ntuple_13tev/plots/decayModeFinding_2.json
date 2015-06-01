@@ -20,8 +20,8 @@
     "step": [
         true
     ], 
-    "title": "eta leading tau", 
+    "title": "decayModeFinding trailing tau", 
     "x_expressions": [
-        "eta_1"
+        "decayModeFinding_2"
     ]
 }

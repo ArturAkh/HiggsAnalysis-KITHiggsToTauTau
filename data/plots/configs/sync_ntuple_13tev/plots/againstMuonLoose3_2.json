@@ -20,8 +20,8 @@
     "step": [
         true
     ], 
-    "title": "eta leading tau", 
+    "title": "againstMuonLoose3 trailing tau", 
     "x_expressions": [
-        "eta_1"
+        "againstMuonLoose3_2"
     ]
 }

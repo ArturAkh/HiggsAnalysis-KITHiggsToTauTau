@@ -1,17 +1,14 @@
 {
     "files": [
-        "aod.root", 
         "miniaod.root", 
         "cern.root"
     ], 
     "folders": [
         "tt/ntuple", 
-        "tt/ntuple", 
         "tree"
     ], 
     "labels": [
         "KIT miniAOD", 
-        "KIT AOD", 
         "CERN miniAOD"
     ], 
     "line_styles": [
@@ -23,7 +20,7 @@
     "step": [
         true
     ], 
-    "title": "Sub-Leading Lepton $\\eta$", 
+    "title": "eta trailing tau", 
     "x_expressions": [
         "eta_2"
     ]
