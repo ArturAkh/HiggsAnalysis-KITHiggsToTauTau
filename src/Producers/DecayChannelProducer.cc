@@ -300,7 +300,7 @@ void DecayChannelProducer::Init(setting_type const& settings)
 	{
 		return product.m_validTaus[0]->getDiscriminator("decayModeFindingNewDMs", event.m_tauMetadata);
 	});
-	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("decayModeFindingNewDMs_2", [](event_type const& event, product_type const& product)
+	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("neutralIsoPtSum_2", [](event_type const& event, product_type const& product)
 	{
 		return product.m_validTaus[1]->getDiscriminator("neutralIsoPtSum", event.m_tauMetadata);
 	});
@@ -308,7 +308,7 @@ void DecayChannelProducer::Init(setting_type const& settings)
 	{
 		return product.m_validTaus[0]->getDiscriminator("neutralIsoPtSum", event.m_tauMetadata);
 	});
-	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("neutralIsoPtSum_2", [](event_type const& event, product_type const& product)
+	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("puCorrPtSum_2", [](event_type const& event, product_type const& product)
 	{
 		return product.m_validTaus[1]->getDiscriminator("puCorrPtSum", event.m_tauMetadata);
 	});
