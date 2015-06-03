@@ -119,6 +119,7 @@ void HttLambdaNtupleConsumer::Init(setting_type const& settings)
 	{
 		return (product.m_genTauDecayMode == (int) GenTauDecayModeProducer::GenTauDecayMode::EM );
 	});
+	LambdaNtupleConsumer<KappaTypes>::AddFloatQuantity("evt", LambdaNtupleConsumer<KappaTypes>::GetFloatQuantities()["event"]);
 	// need to be called at last
 	KappaLambdaNtupleConsumer::Init(settings);
 }
