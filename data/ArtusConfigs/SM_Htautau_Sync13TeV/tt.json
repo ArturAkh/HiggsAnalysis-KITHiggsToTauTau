@@ -58,7 +58,7 @@
 					"#filter:MinMuonsCountFilter",
 					"#filter:MaxMuonsCountFilter",
 					"producer:ValidTausProducer",
-					"filter:ValidTausFilter",
+					"#filter:ValidTausFilter",
 					"producer:TauTriggerMatchingProducer",
 					"producer:RecoTauGenParticleMatchingProducer",
 					"producer:RecoTauGenTauMatchingProducer",
