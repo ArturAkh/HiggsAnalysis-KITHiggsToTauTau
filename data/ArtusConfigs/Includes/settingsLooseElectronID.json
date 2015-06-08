@@ -4,11 +4,11 @@
 	],
 	
 	"LooseElectronReco" : "user",
-	"LooseElectronID" : "vbft95_veto",
+	"LooseElectronID" : "user",
 	"LooseElectronIDType" : {
 		"nick" : {
 			"8TeV" : "summer2013loose",
-			"13TeV" : "none"
+			"13TeV" : "phys14cutbasedveto"
 		}
 	},
 
