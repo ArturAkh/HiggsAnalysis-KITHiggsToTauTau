@@ -333,31 +333,33 @@ ePlusmuMinus_PtTauMinus_path1 = ePlusmuMinus_PtTauPlus_path1.clone(
 	x_label = "p^{#tau^{-}(gen)}_{T} [GeV]")
 
 configs.extend(ePlusmuMinus_PtTauMinus_path1.return_json_with_changed_x_and_weight(x_expressions = ["PtTauMinus"]))
-'''
 
+'''
+'''
 ### CP and spin quantities
 
 # for eMinusmuPlus
 
-eMinusmuPlus_PhiStarCP = pltcl.single_plot(
-	name = "ePlusmuMinus_PhiStarCP",
+eMinusmuPlus_PhiCP = pltcl.single_plot(
+	name = "eMinusmuPlus_PhiCP",
 	title = "Z#rightarrow#tau^{+}#tau^{-}#rightarrow#mu^{+}e^{-}+4#nu, E_{l^{#pm}}^{rest frame} > 0.44 GeV",
-	x_expression = "genPhiStarCP",
+	x_expression = "genPhiCP",
 	x_bins = "50,-0.2,6.5",
 	y_label = "arbitary units",
-	x_label = "#phi^{*}_{CP} [rad]",
+	x_label = "#phi_{CP} [rad]",
 	weight = "TauMProngEnergy > 0.44 && TauPProngEnergy > 0.44",
 	wwwfolder = "",
+	normalized_to_hist1 = True,
 	plot_type = "absolute",
 	legend =[0.73,0.7,0.93,0.9],
 	plotlines = [eMinusmuPlus_CP_spin_pythia, eMinusmuPlus_CP_spin_tauola]
 	)
 
-configs.extend(eMinusmuPlus_PhiStarCP.return_json_with_changed_x_and_weight(x_expressions = ["genPhiStarCP"]))
+configs.extend(eMinusmuPlus_PhiCP.return_json_with_changed_x_and_weight(x_expressions = ["genPhiCP"]))
 
 
-eMinusmuPlus_Zs = eMinusmuPlus_PhiStarCP.clone(
-	name = "ePlusmuMinus_Zs",
+eMinusmuPlus_Zs = eMinusmuPlus_PhiCP.clone(
+	name = "eMinusmuPlus_Zs",
 	weight = "1",
 	x_expression = "genZs",
 	x_bins = "50,-0.5,0.5",
@@ -367,7 +369,7 @@ configs.extend(eMinusmuPlus_Zs.return_json_with_changed_x_and_weight(x_expressio
 
 
 eMinusmuPlus_Zp_vs_Zm_pythia = pltcl.single_plot(
-	name = "ePlusmuMinus_Zp_vs_Zm_pythia",
+	name = "eMinusmuPlus_Zp_vs_Zm_pythia",
 	title = "Z#rightarrow#tau^{+}#tau^{-}#rightarrow#mu^{+}e^{-}+4#nu: pythia8",
 	x_expression = "genZPlus",
 	y_expression = "genZMinus",
@@ -383,7 +385,7 @@ eMinusmuPlus_Zp_vs_Zm_pythia = pltcl.single_plot(
 configs.extend(eMinusmuPlus_Zp_vs_Zm_pythia.return_json_with_changed_x_and_weight(x_expressions = ["genZPlus"]))
 
 eMinusmuPlus_Zp_vs_Zm_tauola = pltcl.single_plot(
-	name = "ePlusmuMinus_Zp_vs_Zm_tauola",
+	name = "eMinusmuPlus_Zp_vs_Zm_tauola",
 	title = "Z#rightarrow#tau^{+}#tau^{-}#rightarrow#mu^{+}e^{-}+4#nu: tauola",
 	x_expression = "genZPlus",
 	y_expression = "genZMinus",
@@ -671,5 +673,78 @@ PiPlusPiMinus_nocut_long_Zp_vs_Zm_tauola = pltcl.single_plot(
 	)
 
 configs.extend(PiPlusPiMinus_nocut_long_Zp_vs_Zm_tauola.return_json_with_changed_x_and_weight(x_expressions = ["genZPlus"]))
+
+# bare vs. dressed (emu channel)
+
+FSR_pythia_diLepMass = pltcl.single_plot(
+	name = "FSR_pythia_diLepMass",
+	title = "Z#rightarrow#tau^{+}#tau^{-}#rightarrow#mu^{+}e^{-}+4#nu (pythia8): normalized to reco",
+	x_expression = "diLepMass",
+	x_bins = "50,0,150",
+	x_label = "m_{#tau#tau}^{vis}",
+	wwwfolder = "",
+	legend =[0.68,0.65,0.93,0.85],
+	plot_type = "absolute",
+	normalized_to_hist1 = True,
+	subplot_denominator = 1,
+	subplot_numerators = [0,2],
+	y_subplot_lims = [0.9,1.1],
+	y_subplot_label = "#frac{dressed or reco}{bare}",
+	plotlines = [Normal_pythia, Bare_pythia, Dressed_pythia]
+	)
+
+configs.extend(FSR_pythia_diLepMass.return_json_with_changed_x_and_weight(x_expressions = ["diLepMass"]))
+
+'''
+
+
+FSRstudies_EM = pltcl.single_plot(
+	name = "FSRstudies_EM",
+	title = "",
+	x_expression = "diLepMass",
+	x_bins = "40 45 50 55 60 65 70 75 80 90 100 120 140",
+	normalized_by_binwidth = True,
+	x_label = "m_{#tau#tau}^{vis}",
+	y_label = "#frac{dN}{dm} [GeV^{-1}]",
+	wwwfolder = "",
+	legend =[0.4,0.55,0.93,0.85],
+	plot_type = "absolute",
+	normalize_reference = 1,
+	normalize_targets = [0,4],
+	subplot_denominator = 1,
+	subplot_numerators = [0,2,3],
+	y_subplot_lims = [0.6,1.4],
+	y_subplot_label = "#frac{Z#rightarrow#tau#tau sim.}{#mu#rightarrow#tau emb.}",
+	plotlines = [FSRstudies_EM, FSRstudies_EM_emb_afterFSR, FSRstudies_EM_emb_afterFSR_up, FSRstudies_EM_emb_afterFSR_down, FSRstudies_EM_higgs],
+	)
+
+configs.extend(FSRstudies_EM.return_json_with_changed_x_and_weight(
+	x_expressions = ["diLepMass"],
+	weights = ["eventWeight"]
+	))
+
+FSRstudies_ET = FSRstudies_EM.clone(
+	name = "FSRstudies_ET",
+	title = "",
+	legend =[0.4,0.55,0.9,0.85],
+	plotlines = [FSRstudies_ET, FSRstudies_ET_emb_afterFSR, FSRstudies_ET_emb_afterFSR_up, FSRstudies_ET_emb_afterFSR_down, FSRstudies_ET_higgs]
+	)
+
+configs.extend(FSRstudies_ET.return_json_with_changed_x_and_weight(
+	x_expressions = ["diLepMass"],
+	weights = ["eventWeight"]
+	))
+
+FSRstudies_MT = FSRstudies_EM.clone(
+	name = "FSRstudies_MT",
+	title = "",
+	legend =[0.4,0.55,0.9,0.85],
+	plotlines = [FSRstudies_MT, FSRstudies_MT_emb_afterFSR, FSRstudies_MT_emb_afterFSR_up, FSRstudies_MT_emb_afterFSR_down, FSRstudies_MT_higgs]
+	)
+
+configs.extend(FSRstudies_MT.return_json_with_changed_x_and_weight(
+	x_expressions = ["diLepMass"],
+	weights = ["eventWeight"]
+	))
 
 higgs_plotter = higgsplot.HiggsPlotter(list_of_config_dicts=configs, list_of_args_strings=[""])

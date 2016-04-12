@@ -1,0 +1,76 @@
+{
+	"FSRstudies_MT": {
+		"include" : [
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsElectronID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsMuonID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsTauID.json"
+			],
+		"TauDiscriminators" : ["againstElectronVLooseMVA6","againstMuonTight3","byVTightIsolationMVArun2v1DBoldDMwLT"],
+		"Channel":"MT",
+		"Processors": {
+			"nick" : {
+				"default" : [
+				"producer:HltProducer",
+				"filter:HltFilter",
+				"filter:MinGenTausCountFilter",
+				"filter:KappaGenTauDecayModeFilter",
+				"producer:ValidMuonsProducer",
+				"producer:RecoMuonGenParticleMatchingProducer",
+				"filter:ValidMuonsFilter",
+				"filter:MinMuonsCountFilter",
+				"producer:TauCorrectionsProducer",
+				"producer:ValidTausProducer",
+				"producer:RecoTauGenParticleMatchingProducer",
+				"filter:ValidTausFilter",
+				"filter:MinTausCountFilter",
+				"#producer:ValidMTPairCandidatesProducer",
+				"#filter:ValidDiTauPairCandidatesFilter",
+				"producer:DecayChannelProducer",
+				"filter:DecayChannelFilter",
+				"producer:DiLeptonQuantitiesProducer",
+				"producer:GeneratorWeightProducer",
+				"producer:EventWeightProducer"
+				]
+			}
+		},
+		"HltPaths" : { 
+			"nick": {
+				"default" : [
+					"HLT_IsoMu18"
+				]
+			}
+		},
+		"DiTauPairMinDeltaRCut" : 0.5,
+		"DiTauPairIsTauIsoMVA": true,
+		"MinNMuons" : 1,
+		"MinNTaus" : 1,
+		"KappaGenTauDecayMode" : "MT",
+		"MuonLowerPtCuts" : ["19"],
+		"MuonUpperAbsEtaCuts" : ["2.1"],
+		"TauLowerPtCuts" : ["20"],
+		"TauUpperAbsEtaCuts" : ["2.3"],
+		"MinNGenTaus" : 2,
+		"InvalidateNonGenParticleMatchingMuons" : true,
+		"InvalidateNonGenParticleMatchingTaus" : true,
+		"Quantities" : [
+			{
+				"include" : [
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Embedding_run2/FSRstudies/kappaQuantities.json"
+				]
+			},
+			"diLepMass",
+			"lep1Pt",
+			"lep1Eta",
+			"lep2Pt",
+			"lep2Eta",
+			"nMuons",
+			"nTaus",
+			"decayChannelIndex",
+			"eventWeight"
+		],
+		"Consumers" : [
+			"KappaLambdaNtupleConsumer",
+			"cutflow_histogram"
+		]
+	}
+}

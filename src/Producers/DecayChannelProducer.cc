@@ -324,9 +324,9 @@ void DecayChannelProducer::Produce(event_type const& event, product_type& produc
 			lepton2 = product.m_validMuons[0];
 
 			// require that in the EM channel at least one of the leptons has a pT > 20 GeV
-			if (lepton1->p4.Pt() > 20. || lepton2->p4.Pt() > 20.) {
+			//if (lepton1->p4.Pt() > 20. || lepton2->p4.Pt() > 20.) {
 				product.m_decayChannel = HttEnumTypes::DecayChannel::EM;
-			}
+			//}
 		}
 		else if (nTaus >= 1)
 		{

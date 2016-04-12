@@ -1,0 +1,67 @@
+{
+	"FSRstudies_TT": {
+		"include" : [
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsElectronID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsMuonID.json",
+			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Run2Analysis/Includes/settingsTauID.json"
+			],
+		"TauDiscriminators" : ["againstElectronVLooseMVA6","againstMuonLoose3","byVTightIsolationMVArun2v1DBoldDMwLT"],
+		"Channel":"TT",
+		"Processors": {
+			"nick" : {
+				"default" : [
+				"producer:HltProducer",
+				"filter:HltFilter",
+				"filter:MinGenTausCountFilter",
+				"filter:KappaGenTauDecayModeFilter",
+				"producer:TauCorrectionsProducer",
+				"producer:ValidTausProducer",
+				"producer:RecoTauGenParticleMatchingProducer",
+				"filter:ValidTausFilter",
+				"filter:MinTausCountFilter",
+				"#producer:ValidTTPairCandidatesProducer",
+				"#filter:ValidDiTauPairCandidatesFilter",
+				"producer:DecayChannelProducer",
+				"filter:DecayChannelFilter",
+				"producer:DiLeptonQuantitiesProducer",
+				"producer:GeneratorWeightProducer",
+				"producer:EventWeightProducer"
+				]
+			}
+		},
+		"HltPaths" : { 
+			"nick": {
+				"default" : [
+					"HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg"
+				]
+			}
+		},
+		"DiTauPairMinDeltaRCut" : 0.5,
+		"DiTauPairIsTauIsoMVA": true,
+		"MinNTaus" : 2,
+		"KappaGenTauDecayMode" : "TT",
+		"TauLowerPtCuts" : ["40"],
+		"TauUpperAbsEtaCuts" : ["2.1"],
+		"MinNGenTaus" : 2,
+		"InvalidateNonGenParticleMatchingTaus" : true,
+		"Quantities" : [
+			{
+				"include" : [
+					"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Embedding_run2/FSRstudies/kappaQuantities.json"
+				]
+			},
+			"diLepMass",
+			"lep1Pt",
+			"lep1Eta",
+			"lep2Pt",
+			"lep2Eta",
+			"nTaus",
+			"decayChannelIndex",
+			"eventWeight"
+		],
+		"Consumers" : [
+			"KappaLambdaNtupleConsumer",
+			"cutflow_histogram"
+		]
+	}
+}

@@ -2,6 +2,7 @@
 
 import Artus.Utility.jsonTools as jsonTools
 import ROOT as r
+import numpy as np
 
 
 ## This class is built to create .json files for the Harryplotter module
@@ -47,6 +48,15 @@ class single_plotline:
 		f = r.TFile(self.num_file, "READ")
 		nevents= f.Get(self.num_folder).Get("ntuple").GetEntries()
 		return 1./nevents
+	def return_nevents(self):
+		f = r.TFile(self.num_file, "READ")
+		tree = f.Get(self.num_folder).Get("ntuple")
+		nevents= tree.GetEntries()
+		nweighted_events = 0.0
+		for event in tree:
+			if event.diLepMass > 40.0 and event.diLepMass <=140.0: nweighted_events += event.eventWeight
+		print nevents, nweighted_events
+		return nweighted_events
 
 	def clone(self,
 		name = None,
@@ -104,6 +114,9 @@ class single_plot:
 		     normalized_to_nevents = False,
 		     normalized_to_unity = False,
 		     normalized_to_hist1 = False,
+		     normalized_by_binwidth = False,
+		     normalize_reference = None,
+		     normalize_targets = [],
 		     profiled = False,
 		     stacked = False,
 		     plot_type = "efficiency",
@@ -134,6 +147,9 @@ class single_plot:
 		self.normalized_to_nevents = normalized_to_nevents
 		self.normalized_to_unity = normalized_to_unity
 		self.normalized_to_hist1 = normalized_to_hist1
+		self.normalized_by_binwidth = normalized_by_binwidth
+		self.normalize_reference = normalize_reference
+		self.normalize_targets = normalize_targets
 		self.profiled = profiled
 		self.stacked = stacked
 		self.plot_type = plot_type
@@ -166,6 +182,9 @@ class single_plot:
 		     normalized_to_nevents = None,
 		     normalized_to_unity = None,
 		     normalized_to_hist1 = None,
+		     normalized_by_binwidth = None,
+		     normalize_reference = None,
+		     normalize_targets = None,
 		     profiled = None,
 		     stacked = None,
 		     plot_type = None,
@@ -197,6 +216,9 @@ class single_plot:
 		     normalized_to_nevents = self.normalized_to_nevents if normalized_to_nevents is None else normalized_to_nevents,
 		     normalized_to_unity = self.normalized_to_unity if normalized_to_unity is None else normalized_to_unity,
 		     normalized_to_hist1 = self.normalized_to_hist1 if normalized_to_hist1 is None else normalized_to_hist1,
+		     normalized_by_binwidth = self.normalized_by_binwidth if normalized_by_binwidth is None else normalized_by_binwidth,
+		     normalize_reference = self.normalize_reference if normalize_reference is None else normalize_reference,
+		     normalize_targets = self.normalize_targets if normalize_targets is None else normalize_targets,
 		     profiled = self.profiled if profiled is None else profiled,
 		     stacked = self.stacked if stacked is None else stacked,
 		     plot_type = self.plot_type if plot_type is None else plot_type,
@@ -291,6 +313,11 @@ class single_plot:
 		self.out_json.setdefault("weights",[]).append(self.weight)
 
 		# making the plot out of available files both for efficiency and absolute plot type 
+		if not self.normalize_reference is None and self.normalize_targets != [] and self.plot_type == "absolute":
+			reference_events = self.plotlines[self.normalize_reference].return_nevents()
+			for plot_index in self.normalize_targets:
+				target_events = self.plotlines[plot_index].return_nevents()
+				self.plotlines[plot_index].scale_factor = float(reference_events)/float(target_events)
 		for akt_plotline in self.plotlines:
 
 			if akt_plotline.num_file == None or akt_plotline.num_folder == None or akt_plotline.num_tree == None:
@@ -336,6 +363,7 @@ class single_plot:
 				self.out_json.setdefault("nicks", []).append(akt_plotline.num_nick)
 				if self.normalized_to_unity == True: self.safe_append_modules(modulename="NormalizeToUnity", moduletype="analysis")
 				if self.normalized_to_hist1 == True: self.safe_append_modules(modulename="NormalizeToFirstHisto", moduletype="analysis")
+				if self.normalized_by_binwidth == True: self.safe_append_modules(modulename="NormalizeByBinWidth", moduletype="analysis")
 			else:
 				print "No proper plot type defined. Choose 'efficiency' or 'absolute'."
 				sys.exit()

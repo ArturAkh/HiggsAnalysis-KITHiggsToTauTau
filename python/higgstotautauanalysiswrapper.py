@@ -71,7 +71,7 @@ class HiggsToTauTauAnalysisWrapper(kappaanalysiswrapper.KappaAnalysisWrapper):
 				log.fatal("Cross section for " + self._config["Nickname"] + " not set! Check your datasets.json")
 				sys.exit(1)
 
-		if not ("GeneratorWeight" in self._config) or (self._config["GeneratorWeight"] < 0):
+		if not ("GeneratorWeight" in self._config) or (self._config["GeneratorWeight"] < 0 and not self._config["GeneratorWeight"] == -999.0):
 			from Kappa.Skimming.registerDatasetHelper import get_generator_weight
 			from Kappa.Skimming.datasetsHelper2015 import isData
 			generator_weight = get_generator_weight(self._config["Nickname"])

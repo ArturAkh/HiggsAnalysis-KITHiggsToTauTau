@@ -23,7 +23,7 @@ void DiLeptonQuantitiesProducer::Init(setting_type const& settings)
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("diLepMass", [](event_type const& event, product_type const& product) {
 		return product.m_diLeptonSystem.mass();
 	});
-	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("diLepMt", [](event_type const& event, product_type const& product) {
+	/*LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("diLepMt", [](event_type const& event, product_type const& product) {
 		return Quantities::CalculateMt(product.m_flavourOrderedLeptons[0]->p4, product.m_flavourOrderedLeptons[1]->p4);
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("diLepGenMass", [](event_type const& event, product_type const& product) {
@@ -64,17 +64,17 @@ void DiLeptonQuantitiesProducer::Init(setting_type const& settings)
 	});
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("pZetaMissVis", [](event_type const& event, product_type const& product) {
 		return product.pZetaMissVis;
-	});
+	});*/
 }
 
 void DiLeptonQuantitiesProducer::Produce(event_type const& event, product_type& product,
 	                                     setting_type const& settings) const
 {
-	assert(product.m_metUncorr);
+	//assert(product.m_metUncorr);
 	assert(product.m_flavourOrderedLeptons.size() >= 2);
 	
 	product.m_diLeptonSystem = (product.m_flavourOrderedLeptons[0]->p4 + product.m_flavourOrderedLeptons[1]->p4);
-	product.m_diLeptonPlusMetSystem = (product.m_diLeptonSystem + product.m_met.p4);
+	//product.m_diLeptonPlusMetSystem = (product.m_diLeptonSystem + product.m_met.p4);
 	
 	for (size_t leptonIndex = 0; leptonIndex < 2; ++leptonIndex)
 	{
@@ -87,7 +87,7 @@ void DiLeptonQuantitiesProducer::Produce(event_type const& event, product_type& 
 	// collinear approximation
 	// reconstruct tau momenta assuming that the neutrinos fly collinear to the taus
 	// HiggsAnalysis/KITHiggsToTauTau/doc/collinear_approximation.nb
-	double p1x = product.m_flavourOrderedLeptons[0]->p4.Px();
+	/*double p1x = product.m_flavourOrderedLeptons[0]->p4.Px();
 	double p1y = product.m_flavourOrderedLeptons[0]->p4.Py();
 	double p2x = product.m_flavourOrderedLeptons[1]->p4.Px();
 	double p2y = product.m_flavourOrderedLeptons[1]->p4.Py();
@@ -113,5 +113,5 @@ void DiLeptonQuantitiesProducer::Produce(event_type const& event, product_type& 
 	product.pZetaMiss = Quantities::PZetaMissVis(product.m_flavourOrderedLeptons[0]->p4, product.m_flavourOrderedLeptons[1]->p4,
 	                                             product.m_met.p4, 0.0);
 	product.pZetaMissVis = Quantities::PZetaMissVis(product.m_flavourOrderedLeptons[0]->p4, product.m_flavourOrderedLeptons[1]->p4,
-	                                                product.m_met.p4, 0.85);
+	                                                product.m_met.p4, 0.85);*/
 }

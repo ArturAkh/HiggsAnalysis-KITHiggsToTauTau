@@ -1,0 +1,19 @@
+{
+	"eleEsNom" : {
+		"ElectronEnergyCorrectionShift" : 1.0
+	},
+	"eleEsUp" : {
+		"ElectronEnergyCorrectionShift" : {
+			"nick" : {
+				"default" : 1.03
+			}
+		}
+	},
+	"eleEsDown" : {
+		"ElectronEnergyCorrectionShift" : {
+			"nick" : {
+				"default" : 0.97
+			}
+		}
+	}
+}
