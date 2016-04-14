@@ -55,7 +55,6 @@ class single_plotline:
 		nweighted_events = 0.0
 		for event in tree:
 			if event.diLepMass > 40.0 and event.diLepMass <=140.0: nweighted_events += event.eventWeight
-		print nevents, nweighted_events
 		return nweighted_events
 
 	def clone(self,

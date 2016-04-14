@@ -695,7 +695,7 @@ FSR_pythia_diLepMass = pltcl.single_plot(
 
 configs.extend(FSR_pythia_diLepMass.return_json_with_changed_x_and_weight(x_expressions = ["diLepMass"]))
 
-'''
+
 
 
 FSRstudies_EM = pltcl.single_plot(
@@ -745,6 +745,63 @@ FSRstudies_MT = FSRstudies_EM.clone(
 configs.extend(FSRstudies_MT.return_json_with_changed_x_and_weight(
 	x_expressions = ["diLepMass"],
 	weights = ["eventWeight"]
+	))
+
+FSRstudies_TT = FSRstudies_EM.clone(
+	name = "FSRstudies_TT",
+	title = "",
+	legend =[0.4,0.55,0.9,0.85],
+	plotlines = [FSRstudies_TT, FSRstudies_TT_emb_afterFSR, FSRstudies_TT_emb_afterFSR_up, FSRstudies_TT_emb_afterFSR_down, FSRstudies_TT_higgs]
+	)
+
+configs.extend(FSRstudies_TT.return_json_with_changed_x_and_weight(
+	x_expressions = ["diLepMass"],
+	weights = ["eventWeight"]
+	))
+'''
+### Embedding Cleaning Check
+
+emb_clean_check_NE = pltcl.single_plot(
+	name = "emb_clean_check_NE",
+	title = "",
+	x_expression = "NKappaElectrons",
+	x_bins = "7,0,7",
+	normalized_by_binwidth = True,
+	x_label = "N_{e}",
+	wwwfolder = "",
+	legend =[0.4,0.55,0.93,0.85],
+	plot_type = "absolute",
+	subplot_denominator = 0,
+	subplot_numerators = [1],
+	y_subplot_lims = [0.99,1.01],
+	y_subplot_label = "#frac{on the fly}{official}",
+	plotlines = [DoubleMuonMINIAOD, DoubleMuonMINIAODonfly],
+)
+
+configs.extend(emb_clean_check_NE.return_json_with_changed_x_and_weight(
+	x_expressions = ["NKappaElectrons"]
+	))
+
+emb_clean_check_NMu = emb_clean_check_NE.clone(
+	name = "emb_clean_check_NMu",
+	x_expression = "NKappaMuons",
+	x_bins = "20,0,20",
+	x_label = "N_{#mu}"
+)
+
+configs.extend(emb_clean_check_NMu.return_json_with_changed_x_and_weight(
+	x_expressions = ["NKappaMuons"]
+	))
+
+emb_clean_check_NPFC = emb_clean_check_NE.clone(
+	name = "emb_clean_check_NPFC",
+	x_expression = "NKappaPackedPFCandidates",
+	x_bins = "50,0,2500",
+	x_label = "N_{PF cand.}"
+)
+
+configs.extend(emb_clean_check_NPFC.return_json_with_changed_x_and_weight(
+	x_expressions = ["NKappaPackedPFCandidates"]
 	))
 
 higgs_plotter = higgsplot.HiggsPlotter(list_of_config_dicts=configs, list_of_args_strings=[""])

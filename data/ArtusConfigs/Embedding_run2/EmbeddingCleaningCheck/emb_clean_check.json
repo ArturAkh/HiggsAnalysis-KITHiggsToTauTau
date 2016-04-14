@@ -1,0 +1,13 @@
+{
+	"emb_clean_check" : {
+		"Consumers" : [
+			"KappaEventConsumer"
+		],
+		"Quantities": [
+			"NKappaElectrons",
+			"NKappaMuons",
+			"NKappaPackedPFCandidates"
+		]
+	}
+}
+
